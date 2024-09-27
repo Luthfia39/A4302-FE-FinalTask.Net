@@ -7,6 +7,8 @@
 }
 <h2>Master Data User</h2>
 
+<button class="btn btn-success mb-3" onclick="showAddUserModal()">Tambah User</button>
+
 <table class="table table-striped" id="userTable">
     <thead>
         <tr>
@@ -22,4 +24,76 @@
     </tbody>
 </table>
 
-<script src="~/js/mstuser.js"></script>
+<!-- Modal Edit User -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editUserForm">
+                    <div class="form-group">
+                        <label for="userName" >Name</label>
+                        <input type="text" class="form-control" id="userName" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">Role</label>
+                        <select class="form-control" id="userRole" required>
+                            <option value="Lender">Lender</option>
+                            <option value="Borrower">Borrower</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userBalance">Balance</label>
+                        <input type="number" class="form-control" id="userBalance" required />
+                    </div>
+                    <input type="hidden" id="userId" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="updateUser()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Add User -->
+<div class="modal fade" id="addUserModal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm">
+                    <div class="form-group">
+                        <label for="newUserName">Name</label>
+                        <input type="text" class="form-control" id="newUserName" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="newUserEmail">Email</label>
+                        <input type="email" class="form-control" id="newUserEmail" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="newUserRole">Role</label>
+                        <select class="form-control" id="newUserRole" required>
+                            <option value="Lender">Lender</option>
+                            <option value="Borrower">Borrower</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="addUser()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/js/mstuser.js"></script>
+    
+}
+
