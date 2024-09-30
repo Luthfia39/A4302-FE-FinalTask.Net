@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Lender";
+    Layout = "_LayoutLender";
+}
+<h1 class="text-center fw-bold">Selamat datang!</h1>
+<div class="">
+    <p class="fs-4">Saldo anda saat ini : <span id="lender-balance"></span></p>
+
+    <button type="button" class="btn-primary btn-block mt-3" onclick="editBalance()">Tambah Saldo</button>
+</div>
+
+<!-- Modal Edit Balance -->
+<div class="modal fade" id="editBalanceModal" tabindex="-1" role="dialog" aria-labelledby="editBalanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBalanceModalLabel">Tambah Saldo</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editUserForm">
+                    <div class="form-group">
+                        <label for="userBalance">Balance</label>
+                        <input type="number" class="form-control" id="userBalance" required />
+                    </div>
+                    <input type="hidden" id="userId" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="updateBalance()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/lenderBalance.js"></script>

@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Borrower";
+    Layout = "_LayoutBorrower";
+}
+<h1>Selamat Datang!</h1>
+
+<div class="">
+    <p class="fs-4">Saldo anda saat ini : <span id="borrower-balance"></span></p>
+
+    <button type="button" class="btn-primary btn-block mb-2" onclick="showAddLoanModal()">Ajukan Pinjaman</button>
+</div>
+
+
+<table class="table table-striped" id="borrowerTable">
+    <thead>
+        <tr>
+            <th class="d-none">Nama</th>
+            <th>Nama</th>
+            <th>Nominal Pinjaman</th>
+            <th>Bunga</th>
+            <th>Durasi</th>
+            <th>Status Pinjaman</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<!-- Modal Add Loan -->
+<div class="modal fade" id="addLoanModal" tabindex="-1" role="dialog" aria-labelledby="addLoanModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addLoanModalLabel">Pengajuan Pinjaman</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editUserForm">
+                    <div class="form-group">
+                        <label for="userAmount">Nominal Pinjaman</label>
+                        <input type="number" class="form-control" id="userAmount" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="userInterestRate">Bunga yang diajukan</label>
+                        <input type="number" class="form-control" id="userInterestRate" required />
+                    </div>
+                    <input type="hidden" id="borrowerId" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="addLoan()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Pay Loan -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel">Rincian Cicilan</h5>
+            </div>
+            <div class="modal-body">
+                <table class="table" id="paymentTable">
+                    <thead>
+                        <tr>
+                            <th>Bulan</th>
+                            <th>Nominal Cicilan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentTableBody"> </tbody>
+                </table>
+				<div>Total Cicilan: <span id ="totalPayment">0</span> </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="pay()">Bayar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/borrower.js"></script>
+<script>
+    function showAddLoanModal() {
+        var modal = new bootstrap.Modal(document.getElementById('addLoanModal'));
+        modal.show();
+    }
+</script>

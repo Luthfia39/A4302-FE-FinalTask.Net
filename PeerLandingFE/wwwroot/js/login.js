@@ -16,11 +16,19 @@ async function submitLogin() {
         });
 
         const result = await response.json();
-        console.log(result);
+        //console.log(result.data.role);
 
         if (response.ok) {
             localStorage.setItem('jwtToken', result.data.token);
-            window.location.href = 'Home/Index';
+            localStorage.setItem('id', result.data.id);
+            if (result.data.role == 'Lender') {
+                window.location.href = 'Lender/Index';
+            } else if (result.data.role == 'Borrower') {
+                window.location.href = 'Borrower/Index';
+            } else {
+                window.location.href = 'Home/Index';
+            }
+            
         } else {
             alert(result.message || 'Login Failed. Please try again');
         }

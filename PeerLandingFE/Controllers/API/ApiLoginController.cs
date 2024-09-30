@@ -31,9 +31,5 @@ namespace PeerLandingFE.Controllers.API
                 return BadRequest("Login failed");
             }
         }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
     }
 }
